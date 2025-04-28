@@ -25,14 +25,8 @@ button:hover,
   border-color: hotpink;
 }
 
-  
   button:active {
     transform: scale(0.95);
-  }
-  
-  input:focus,
-  button:focus {
-    outline: none;
   }
   
   header {
@@ -99,7 +93,7 @@ button:hover,
   
   /* Injecting the btn class via JS */
   .btn {
-    background-color: #ed0ce5;
+    background-color: #fd56de;
     border: 0;
     border-radius: 10px;
     color: #fff;
@@ -114,10 +108,47 @@ button:hover,
   
   ul.songs li {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    margin: 10px 0;
+    align-items: center;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
   }
+  /* Hover effect for cards */
+ul.songs li:hover {
+    transform: translateY(-5px);
+    background-color: #f8c8d8; /* Light pink color when hovered */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Song and Artist Text */
+ul.songs li span {
+    font-size: 18px;
+    font-weight: bold;
+    color: palevioletred;
+    flex-grow: 1;
+}
+
+/* Button inside card */
+ul.songs li button {
+    background-color: #ed0ce5;
+    border: 0;
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: lightpink;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect for the button */
+ul.songs li button:hover {
+    background-color: hotpink;
+    box-shadow: 0 0 10px 2px hotpink;
+}
   
   .container {
     margin: 30px auto;
