@@ -3,6 +3,8 @@ const form = document.getElementById('form');
 const search = document.getElementById('search');
 const result = document.getElementById('result');
 const more = document.getElementById('more');
+let lastSearchTerm = '';
+
 
 const apiURL = 'https://api.lyrics.ovh';
 
@@ -23,6 +25,7 @@ form.addEventListener('submit', (e) => {
   if (!searchTerm) {
     alert('Please type in a search term');
   } else {
+    lastSearchTerm = searchTerm; //saves the search term for the "go back to results" button
     searchSongs(searchTerm);
   }
 });
@@ -37,7 +40,7 @@ function showDataUnsafe(lyrics) {
           .map(
             (song) => `<li>
         <span><strong>${song.artist.name}</strong> - ${song.title}</span>
-        <button class="btn" data-artist="${song.artist.name}" data-songtitle="${song.title}">Get Lyrics</button>
+        <button class="btn" data-artist="${song.artist.name}" data-songtitle="${song.title}">get lyrics!</button>
       </li>`
           )
           .join('')}
@@ -83,7 +86,7 @@ function showDataUnsafe(lyrics) {
   
       const button = document.createElement('button');
       button.className = 'btn';
-      button.textContent = 'Get Lyrics';
+      button.textContent = 'get lyrics';
       button.dataset.artist = song.artist.name;
       button.dataset.songtitle = song.title;
   
@@ -161,7 +164,15 @@ result.addEventListener('click', (e) => {
       result.append(errorMessage);
       return;
     }
-  
+     // Create "Back to Results" button
+    const backButton = document.createElement('button');
+        backButton.textContent = 'back to search results';
+        backButton.className = 'btn';
+        backButton.addEventListener('click', () => {
+        searchSongs(lastSearchTerm); // we'll set this up below
+     });
+    result.append(backButton);
+
     // Create heading
     const heading = document.createElement('h2');
     const strong = document.createElement('strong');
