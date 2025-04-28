@@ -11,6 +11,20 @@
   button {
     cursor: pointer;
   }
+  /* Target all buttons */
+button,
+.btn {
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+button:hover,
+    .btn:hover {
+  box-shadow: 0 0 10px 2px hotpink;
+  background-color: hotpink;
+  border-color: hotpink;
+}
+
   
   button:active {
     transform: scale(0.95);
@@ -85,7 +99,7 @@
   
   /* Injecting the btn class via JS */
   .btn {
-    background-color: #8d56fd;
+    background-color: #ed0ce5;
     border: 0;
     border-radius: 10px;
     color: #fff;
